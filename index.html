@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OTT VIP</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #050009;
+    color: white;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 450px;
+    padding: 32px;
+
+    background: #13081a;
+
+    border: 2px solid #a52cff;
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 15px #8b20ff,
+        0 0 40px #8b20ff88;
+}
+
+h1 {
+    text-align: center;
+    color: #d18cff;
+    font-size: 46px;
+    margin: 0 0 28px;
+    text-shadow: 0 0 15px #a52cff;
+}
+
+input {
+    width: 100%;
+    height: 60px;
+
+    padding: 0 16px;
+
+    background: #08040b;
+    color: white;
+
+    border: 2px solid #47156b;
+    border-radius: 15px;
+
+    font-size: 20px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #a52cff;
+    box-shadow: 0 0 15px #a52cff;
+}
+
+.server-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+button {
+    height: 60px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: linear-gradient(
+        135deg,
+        #9229df,
+        #ad38ef
+    );
+
+    color: white;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px #00000066;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    box-shadow: 0 0 20px #a52cff;
+    transform: translateY(-2px);
+}
+
+.server {
+    flex: 1;
+}
+
+.random {
+    width: 100%;
+    margin-top: 18px;
+}
+
+.result {
+    height: 240px;
+
+    margin-top: 25px;
+
+    background: #08040b;
+
+    border: 2px solid #30133d;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.question {
+    font-size: 75px;
+}
+
+.result-text {
+    color: #d18cff;
+
+    font-size: 40px;
+    font-weight: bold;
+
+    text-shadow: 0 0 15px #a52cff;
+}
+
+.server-name {
+    margin-top: 12px;
+    color: #817487;
+    font-size: 17px;
+}
+
+/* CHỮ Ở DƯỚI */
+
+footer {
+    text-align: center;
+    margin-top: 22px;
+}
+
+.footer-name {
+    color: #d18cff;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    text-shadow: 0 0 10px #a52cff;
+}
+
+.footer-text {
+    margin-top: 6px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>OTT VIP</h1>
+
+    <input
+        id="username"
+        type="text"
+        placeholder="Nhập tên..."
+    >
+
+    <div class="server-row">
+
+        <button
+            class="server"
+            onclick="selectServer(1)"
+        >
+            SERVER 1
+        </button>
+
+        <button
+            class="server"
+            onclick="selectServer(3)"
+        >
+            SERVER 3
+        </button>
+
+    </div>
+
+    <button
+        class="random"
+        onclick="randomGame()"
+    >
+        RANDOM KÉO - BÚA - BAO
+    </button>
+
+    <div class="result">
+
+        <div
+            class="question"
+            id="question"
+        >
+            ?
+        </div>
+
+        <div
+            class="result-text"
+            id="result"
+        >
+            READY
+        </div>
+
+        <div
+            class="server-name"
+            id="serverName"
+        >
+            SERVER 3
+        </div>
+
+    </div>
+
+    <footer>
+
+        <div class="footer-name">
+            Masew.dev
+        </div>
+
+        <div class="footer-text">
+            đem bán làm con chó
+        </div>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+function selectServer(server) {
+
+    document.getElementById("serverName").innerText =
+        "SERVER " + server;
+
+    document.getElementById("result").innerText =
+        "READY";
+
+    document.getElementById("question").innerText =
+        "?";
+}
+
+
+function randomGame() {
+
+    const choices = [
+        "✂️ KÉO",
+        "🪨 BÚA",
+        "📄 BAO"
+    ];
+
+    const random =
+        Math.floor(
+            Math.random() * choices.length
+        );
+
+    document.getElementById("question").innerText =
+        "✓";
+
+    document.getElementById("result").innerText =
+        choices[random];
+
+    document.getElementById("serverName").innerText =
+        "RANDOM KÉO - BÚA - BAO";
+}
+
+</script>
+
+</body>
+</html>
