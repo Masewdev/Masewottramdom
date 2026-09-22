@@ -146,7 +146,27 @@ button:hover {
     font-size: 17px;
 }
 
-/* CHỮ Ở DƯỚI */
+/* BỘ ĐẾM */
+
+.visitor-counter {
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #d18cff;
+
+    font-size: 16px;
+
+    text-shadow: 0 0 8px #a52cff;
+}
+
+.visitor-number {
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
 
 footer {
     text-align: center;
@@ -170,7 +190,6 @@ footer {
     font-size: 14px;
 }
 </style>
-
 </head>
 
 <body>
@@ -182,7 +201,7 @@ footer {
     <input
         id="username"
         type="text"
-        placeholder="Masew Dev."
+        placeholder="Nhập tên..."
     >
 
     <div class="server-row">
@@ -207,7 +226,7 @@ footer {
         class="random"
         onclick="randomGame()"
     >
-        Masew Dev Ấn Vào Đây Để Ramdom
+        RANDOM KÉO - BÚA - BAO
     </button>
 
     <div class="result">
@@ -235,6 +254,21 @@ footer {
 
     </div>
 
+    <div class="visitor-counter">
+
+        👥 Đã sử dụng web:
+
+        <span
+            class="visitor-number"
+            id="visitorCount"
+        >
+            Đang tải...
+        </span>
+
+        lượt
+
+    </div>
+
     <footer>
 
         <div class="footer-name">
@@ -242,7 +276,7 @@ footer {
         </div>
 
         <div class="footer-text">
-            Tool Free Đem Bán Làm Con Chó
+            đem bán làm con chó
         </div>
 
     </footer>
@@ -269,7 +303,7 @@ function randomGame() {
 
     const choices = [
         "✂️ KÉO",
-        "☠ BÚA",
+        "🪨 BÚA",
         "📄 BAO"
     ];
 
@@ -287,6 +321,33 @@ function randomGame() {
     document.getElementById("serverName").innerText =
         "RANDOM KÉO - BÚA - BAO";
 }
+
+
+/* BỘ ĐẾM */
+
+fetch(
+    "https://api.counterapi.dev/v1/masewdev/Masewottrandom/up"
+)
+
+.then(response => response.json())
+
+.then(data => {
+
+    const count = Math.round(
+        Number(data.count)
+    );
+
+    document.getElementById("visitorCount").innerText =
+        count.toLocaleString("vi-VN");
+
+})
+
+.catch(error => {
+
+    document.getElementById("visitorCount").innerText =
+        "36.67";
+
+});
 
 </script>
 
